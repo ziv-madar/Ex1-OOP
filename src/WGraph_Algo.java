@@ -68,6 +68,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 	 */
 	@Override
 	public boolean isConnected() {
+		
 		if(wga.getV().size()==0) return true;
 		Iterator<node_info> temp = wga.getV().iterator();
 		node_info n = temp.next();
@@ -93,14 +94,12 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 				}
 				return false;
 			}
-
 		}
 		for(node_info w : wga.getV()) {
 			w.setTag(0);
 		}
 		return true;
 	}
-
 
 
 	/**
@@ -115,7 +114,6 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 			vertex.setTag(Integer.MAX_VALUE);
 		}
 		node_info start = wga.getNode(src);
-
 		start.setTag(0);
 		PriorityBlockingQueue<node_info> qp = new PriorityBlockingQueue<node_info>(wga.getV().size(),new NodeComp());
 		qp.put(start);
@@ -145,14 +143,12 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 		for(node_info vertex : wga.getV()) {
 			vertex.setTag(Integer.MAX_VALUE);
 		}
-
 		int[] prev = new int[wga.nodeSize()];
 		node_info start = wga.getNode(src);
 		start.setTag(0);
 		PriorityBlockingQueue<node_info> qp = new PriorityBlockingQueue<node_info>(wga.getV().size(),new NodeComp());
 		qp.add(start);
 		prev[src%wga.nodeSize()] = -1;
-
 		while(!qp.isEmpty()) {
 			node_info v = qp.poll();
 			Collection<node_info> arrNei = wga.getV(v.getKey());
@@ -194,11 +190,9 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 			for(node_info v : wga.getV()) {
 				ans += ""+v.getKey()+": "+v.getInfo()+"\n";
 			}
-			writer.write(ans); // Override ...
-
+			writer.write(ans); 
 			writer.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
