@@ -19,17 +19,12 @@ import java.util.concurrent.PriorityBlockingQueue;
 
 
 
-
-
-
-
-
 public class WGraph_Algo implements weighted_graph_algorithms {
 
 	private weighted_graph wga;
 	public static double edge;
 	public static String info = "";
-	
+
 	/**
 	 * This function takes a graph parameter (g) and performs an assignment to the object variable (wga).
 	 * O(1)
@@ -47,7 +42,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 
 		return this.wga;
 	}
-	
+
 	/**
 	 * This function performs deep copying between two graphs
 	 * O(n)
@@ -66,7 +61,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 		}
 		return ans;
 	}
-	
+
 	/**
 	 * This function returns true if there is a Route between all the vertices in the graph, otherwise returns false.
 	 * O(V*E)
@@ -137,7 +132,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 		}
 		return wga.getNode(dest).getTag();
 	}
-	
+
 	/**
 	 * This function receives keys of 2 vertices in the graph, 
 	 * Checking what is the shortest route between them,
@@ -178,9 +173,9 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 			run = prev[run%wga.nodeSize()];
 		}
 		ans.add(0, wga.getNode(src));
-				for(node_info w : wga.getV()) {
-					w.setTag(0);
-				}
+		for(node_info w : wga.getV()) {
+			w.setTag(0);
+		}
 		return ans;
 	}
 
@@ -191,7 +186,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 	 */
 	@Override
 	public boolean save(String file) {
-		
+
 		File f1 = new File(file);
 		try {
 			FileWriter writer = new FileWriter(f1);
@@ -200,7 +195,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 				ans += ""+v.getKey()+": "+v.getInfo()+"\n";
 			}
 			writer.write(ans); // Override ...
-			
+
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -209,8 +204,8 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 		}
 		return true;
 	}
-	
-	
+
+
 	/**
 	 * This function load a graph to this graph algorithm.
 	 * O(n)
@@ -223,17 +218,17 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 			BufferedReader br = new BufferedReader(new FileReader(f1));
 			while((str = br.readLine()) != null) {
 				if(!str.equals("graph:")) {
-				   int i = str.indexOf("|");
-				   int key = Integer.parseInt(str.substring(0, i-2));
-				   info = str.substring(i);
-				   wga.removeNode(key);
-				   wga.addNode(key);
-				   info = "";
+					int i = str.indexOf("|");
+					int key = Integer.parseInt(str.substring(0, i-2));
+					info = str.substring(i);
+					wga.removeNode(key);
+					wga.addNode(key);
+					info = "";
 				}
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
-			
+
 			e.printStackTrace();
 			return false;
 		} catch (IOException e) {
@@ -243,5 +238,5 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 		}
 		return true;
 	}
-	
+
 }

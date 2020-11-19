@@ -8,10 +8,6 @@ import java.util.StringTokenizer;
 
 
 
-
-
-
-
 /**
  * WGraph_DS A class that implements the weighted_graph interface 
  * and contains the internal class NodeInfo that implements the node_info interface.
@@ -106,13 +102,9 @@ public class WGraph_DS implements weighted_graph {
 		public String toString() {
 			return "NodeInfo [_key=" + _key + ", _info=" + _info + ", _tag=" + _tag + "]";
 		}
-
-
-
-
-
-
 	}
+
+
 
 	/**
 	 * This function gets a key that represents a vertex in the graph,
@@ -128,6 +120,8 @@ public class WGraph_DS implements weighted_graph {
 		}
 		return null;
 	}
+
+
 	/**
 	 * This function receives two keys that represent vertices in the graph,
 	 * Checks if there is a side between them, if so - returns true
@@ -149,12 +143,14 @@ public class WGraph_DS implements weighted_graph {
 		return false;
 	}
 
+
 	/**
 	 * This function receives two vertex keys and returns the distance representing the edge.
 	 * O(1) - Find the neighbor string of n1 the vertex n2 and return the weight for it.
 	 */
 	@Override
 	public double getEdge(int node1, int node2) {
+
 		if(this.hasEdge(node1, node2)) {
 			int i = this.getNode(node1).getInfo().indexOf("|"+node2+",");
 			String ans = "";
@@ -175,12 +171,14 @@ public class WGraph_DS implements weighted_graph {
 		return -1;
 	}
 
+
 	/**
 	 * This function gets a new unique key and adds it to the graph.
 	 * O(1)
 	 */
 	@Override
 	public void addNode(int key) {
+
 		if(!gd.containsKey(key)) {
 			node_info n = new NodeInfo(key);
 			if(WGraph_Algo.info != "") {
@@ -199,6 +197,7 @@ public class WGraph_DS implements weighted_graph {
 	 */
 	@Override
 	public void connect(int node1, int node2, double w) {
+
 		if(gd.containsKey(node1) && gd.containsKey(node2) && !this.hasEdge(node1, node2) && node1 != node2 ) {
 			node_info n1 = this.getNode(node1);
 			if(n1.getInfo() == "") {
@@ -218,15 +217,18 @@ public class WGraph_DS implements weighted_graph {
 			statusCount++;
 		}
 	}
+
+
 	/**
 	 * This function returns all the vertices in the graph.
 	 * O(1)
 	 */
 	@Override
 	public Collection<node_info> getV() {
-		
+
 		return gd.values();
 	}
+
 
 	/**
 	 * This function receives a key that represents a vertex and returns all the neighbors of that vertex.
@@ -280,6 +282,8 @@ public class WGraph_DS implements weighted_graph {
 		}
 		return null;
 	}
+
+
 	/**
 	 * This function receives two keys that represent vertices in the graph - if they are in the graph and there is an edge between them, 
 	 * then the function deletes the edge.
@@ -298,6 +302,7 @@ public class WGraph_DS implements weighted_graph {
 				n1.setInfo(info1.substring(0, start1)+info1.substring(end1));
 			}
 
+
 			node_info n2 = this.getNode(node2);
 			String info2 = n2.getInfo();
 			int start2 = info2.indexOf("|"+node1+",");
@@ -312,8 +317,8 @@ public class WGraph_DS implements weighted_graph {
 			statusCount++;
 		}
 	}
-	
-	
+
+
 	/**
 	 * This function returns the number of all vertices in the graph.
 	 */
@@ -322,18 +327,18 @@ public class WGraph_DS implements weighted_graph {
 
 		return gd.size();
 	}
-	
-	
+
+
 	/**
 	 * This function returns the number of all edges in the graph.
 	 */
 	@Override
 	public int edgeSize() {
-		
+
 		return numOfEdge;
 	}
-	
-	
+
+
 	/**
 	 * This function returns the number of all actions performed on the graph.
 	 */
@@ -342,7 +347,6 @@ public class WGraph_DS implements weighted_graph {
 
 		return statusCount;
 	}
-
 
 }
 
