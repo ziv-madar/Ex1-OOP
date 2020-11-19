@@ -33,7 +33,7 @@ public class WGraph_DS implements weighted_graph {
 
 		this.gd = new HashMap<Integer, node_info>();
 	}
-	
+
 
 	/**
 	 * internal class NodeInfo.
@@ -58,7 +58,7 @@ public class WGraph_DS implements weighted_graph {
 			this._tag = 0;
 			this._info = "";
 		}
-		
+
 		/**
 		 * constructor 
 		 * @param key
@@ -71,10 +71,10 @@ public class WGraph_DS implements weighted_graph {
 		}
 
 
-		
+
 		@Override
 		public int getKey() {
-			
+
 			return this._key;
 		}
 
@@ -86,19 +86,19 @@ public class WGraph_DS implements weighted_graph {
 
 		@Override
 		public void setInfo(String s) {
-			
+
 			this._info = s+"";
 		}
 
 		@Override
 		public double getTag() {
-			
+
 			return this._tag;
 		}
 
 		@Override
 		public void setTag(double t) {
-			
+
 			this._tag = t;
 		}
 
@@ -107,7 +107,7 @@ public class WGraph_DS implements weighted_graph {
 			return "NodeInfo [_key=" + _key + ", _info=" + _info + ", _tag=" + _tag + "]";
 		}
 
-		
+
 
 
 
@@ -148,8 +148,9 @@ public class WGraph_DS implements weighted_graph {
 		}
 		return false;
 	}
-	
+
 	/**
+	 * This function receives two vertex keys and returns the distance representing the edge.
 	 * O(1) - Find the neighbor string of n1 the vertex n2 and return the weight for it.
 	 */
 	@Override
@@ -173,8 +174,9 @@ public class WGraph_DS implements weighted_graph {
 		}
 		return -1;
 	}
-	
+
 	/**
+	 * This function gets a new unique key and adds it to the graph.
 	 * O(1)
 	 */
 	@Override
@@ -188,8 +190,11 @@ public class WGraph_DS implements weighted_graph {
 			statusCount++;
 		}
 	}
-	
+
 	/**
+	 * This function gets two keys of vertices, and a distance w.
+	 * This function connects the edge between the two vertices if they exist in the graph,
+	 * And adds to the edge the weight.
 	 * O(1)
 	 */
 	@Override
@@ -214,15 +219,17 @@ public class WGraph_DS implements weighted_graph {
 		}
 	}
 	/**
+	 * This function returns all the vertices in the graph.
 	 * O(1)
 	 */
 	@Override
 	public Collection<node_info> getV() {
-		// TODO Auto-generated method stub
+		
 		return gd.values();
 	}
-	
+
 	/**
+	 * This function receives a key that represents a vertex and returns all the neighbors of that vertex.
 	 *  O(k) - k is number of degrees of the vertex(node_id).
 	 */
 	@Override
@@ -244,9 +251,12 @@ public class WGraph_DS implements weighted_graph {
 		}
 		return null;
 	}
-	
-	
+
+
 	/**
+	 * This function removes a vertex from the graph ,
+	 * pass the list of the neighbors of the key, deletes them from the vertex,
+	 * and returns the deleted vertex.
 	 *  O(k) - k is number of degrees of the vertex(key).
 	 */
 	@Override
@@ -271,7 +281,8 @@ public class WGraph_DS implements weighted_graph {
 		return null;
 	}
 	/**
-	 * O(1)
+	 * This function receives two keys that represent vertices in the graph - if they are in the graph and there is an edge between them, 
+	 * then the function deletes the edge.
 	 */
 	@Override
 	public void removeEdge(int node1, int node2) {
@@ -301,111 +312,37 @@ public class WGraph_DS implements weighted_graph {
 			statusCount++;
 		}
 	}
-
+	
+	
+	/**
+	 * This function returns the number of all vertices in the graph.
+	 */
 	@Override
 	public int nodeSize() {
 
 		return gd.size();
 	}
-
+	
+	
+	/**
+	 * This function returns the number of all edges in the graph.
+	 */
 	@Override
 	public int edgeSize() {
-		// TODO Auto-generated method stub
+		
 		return numOfEdge;
 	}
-
+	
+	
+	/**
+	 * This function returns the number of all actions performed on the graph.
+	 */
 	@Override
 	public int getMC() {
 
 		return statusCount;
 	}
 
-
-
-	public static void main(String[] args) {
-
-
-		//		WGraph_DS g = new WGraph_DS();
-		//
-		//
-		//
-		//		g.addNode(0);
-		//		g.addNode(1);
-		//		g.addNode(2);
-		//		g.addNode(3);
-		//		g.addNode(4);
-		//
-		//		g.connect(0,2,3);
-		//		g.connect(2,4,8);
-		//		g.connect(0,4,17);
-		//		g.connect(2,3,8);
-		//
-		//		System.out.println(g.edgeSize());
-		//		System.out.println(g.nodeSize());
-		//		System.out.println(g.getMC());
-		//
-		//		node_info n1 = g.getNode(0);
-		//		System.out.println(n1);
-		//		node_info n2 = g.getNode(4);
-		//		System.out.println(n2);
-		//
-		//		System.out.println(g.hasEdge(1, 0));
-		//		System.out.println(g.hasEdge(0, 4));
-		//
-		//		Collection<node_info> arrG = g.getV();
-		//		System.out.println(arrG);
-		//
-		//		Collection<node_info> arrNei = g.getV(2);
-		//		System.out.println(arrNei);
-		//
-		//		g.removeNode(2);
-		//		System.out.println(arrG);
-		//		System.out.println(g.edgeSize());
-		//		System.out.println(g.nodeSize());
-		//		System.out.println(g.getMC());
-		//
-		//		g.removeEdge(0, 2);
-		//		System.out.println(arrG);
-		//		System.out.println(g.edgeSize());
-		//		System.out.println(g.nodeSize());
-		//		System.out.println(g.getMC());
-
-		WGraph_DS g = new WGraph_DS();
-		g.addNode(1);
-		g.addNode(2);
-		g.addNode(3);
-		g.addNode(4);
-		g.addNode(5);
-
-		g.connect(1, 2, 15);
-		g.connect(1, 3, 2);
-		g.connect(1, 4, 17);
-		g.connect(1, 5, 20);
-		g.connect(3, 5, 4);
-		g.connect(5, 4, 1);
-
-		WGraph_DS g1 = new WGraph_DS();
-		g1.addNode(1);
-		g1.addNode(2);
-		g1.addNode(3);
-
-		weighted_graph_algorithms w = new WGraph_Algo();
-		weighted_graph_algorithms w2 = new WGraph_Algo();
-		w2.init(g1);
-		
-		w.init(g);
-		System.out.println("w= "+w.getGraph().getV());
-		System.out.println(w.isConnected());
-		System.out.println(w.shortestPathDist(1, 4));
-		System.out.println(w.shortestPath(1, 4));
-		w.save("f1.txt");
-		System.out.println(g1.getV());
-		w2.load("f1.txt");
-		System.out.println(g1.getV());
-
-
-
-	} 
 
 }
 

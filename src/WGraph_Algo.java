@@ -29,7 +29,9 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 	private weighted_graph wga;
 	public static double edge;
 	public static String info = "";
+	
 	/**
+	 * This function takes a graph parameter (g) and performs an assignment to the object variable (wga).
 	 * O(1)
 	 */
 	@Override
@@ -47,6 +49,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 	}
 	
 	/**
+	 * This function performs deep copying between two graphs
 	 * O(n)
 	 */
 	@Override
@@ -65,6 +68,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 	}
 	
 	/**
+	 * This function returns true if there is a Route between all the vertices in the graph, otherwise returns false.
 	 * O(V*E)
 	 */
 	@Override
@@ -105,6 +109,8 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 
 
 	/**
+	 * This function receives keys of 2 vertices in the graph, 
+	 * Checking what is the shortest route between them, And returns the number of steps in this route.
 	 * O(V*E)
 	 */
 	@Override
@@ -133,6 +139,9 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 	}
 	
 	/**
+	 * This function receives keys of 2 vertices in the graph, 
+	 * Checking what is the shortest route between them,
+	 * And returns a list of all the vertices we went through in this route.
 	 * O(V*E)
 	 */
 	@Override
@@ -176,12 +185,13 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 	}
 
 
-
 	/**
+	 * Saves this weighted graph to the given file name.
 	 * O(n)
 	 */
 	@Override
 	public boolean save(String file) {
+		
 		File f1 = new File(file);
 		try {
 			FileWriter writer = new FileWriter(f1);
@@ -200,7 +210,9 @@ public class WGraph_Algo implements weighted_graph_algorithms {
 		return true;
 	}
 	
+	
 	/**
+	 * This function load a graph to this graph algorithm.
 	 * O(n)
 	 */
 	@Override
